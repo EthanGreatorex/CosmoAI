@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+const chatMessage = document.getElementById('chat-messages')
+
+chatMessage.addEventListener('click', function() {
+    toggleSidebar();
+})
+
 
 function scrollToBottom() {
     const chatMessages = document.getElementById('chat-messages');
@@ -48,8 +54,6 @@ async function requestAI() {
 
     const moodValue = selectedMood.value;
 
-
-
     // Clear input
     document.getElementById('user-input').value = '';
 
@@ -60,19 +64,16 @@ async function requestAI() {
     userMessage.textContent = userInput;
     chatMessages.appendChild(userMessage);
 
-    // Prepare request payload
     const formData = new FormData();
     formData.append('prompt', userInput);
-    formData.append('mood',moodValue);
+    formData.append('mood', moodValue);
 
     if (websiteUrl) {
-        // If a website URL is provided, send it as context
         formData.append('context', websiteUrl);
     } else if (fileInput.files.length > 0) {
-        // If a file is uploaded, send it to the backend
         formData.append('file', fileInput.files[0]);
     } else {
-        formData.append('context', ''); // Default to no context
+        formData.append('context', '');
     }
 
     try {
@@ -83,11 +84,23 @@ async function requestAI() {
         });
         const data = await response.json();
 
-        // Append AI response
+        // Process the AI response and add one line at a time
         const aiMessage = document.createElement('div');
         aiMessage.classList.add('message', 'ai');
-        aiMessage.innerHTML = data.response;
         chatMessages.appendChild(aiMessage);
+
+        const lines = data.response.split('\n');
+        let currentIndex = 0;
+
+        const interval = setInterval(() => {
+            if (currentIndex < lines.length) {
+                aiMessage.innerHTML += lines[currentIndex];
+                currentIndex++;
+            } else {
+                clearInterval(interval);
+            }
+            scrollToBottom();
+        }, 100);
 
     } catch (error) {
         console.error('Error:', error);
@@ -95,9 +108,10 @@ async function requestAI() {
     } finally {
         // Hide loading spinner
         document.getElementById('loading').style.display = 'none';
-        scrollToBottom();
     }
 }
+
+
 
 // Toggle Chat Area
 document.querySelector('.new-chat-button').addEventListener('click', () => {
