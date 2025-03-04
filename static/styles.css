@@ -430,11 +430,11 @@ hr.rounded {
 
 @media (max-width: 500px) {
     .contact-info{
-        margin-top: 20vh;
+        margin-top: 40vh;
     }
 }
 @media (max-width: 400px) {
     .contact-info{
-        margin-top: 25vh;
+        margin-top: 45vh;
     }
 }
