@@ -42,6 +42,9 @@ def process():
     session['chat_history'].append({'ai': response})
 
     response_html = mistune.html(response)
+    
+    if response_html == '<p>Error</p>':
+        response_html = 'Sorry! Too many tokens required.'
 
     return jsonify({
         "response": response_html,
