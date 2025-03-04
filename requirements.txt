@@ -1,3 +1,4 @@
+gunicorn
 groq
 pymupdf
 flask
