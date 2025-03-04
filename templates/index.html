@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmo AI</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/cosmo.png') }}" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <button class="toggle-sidebar" onclick="toggleSidebar()">☰ Menu</button>
+
+
+    <div class="sidebar" id="sidebar">
+        <img src="{{ url_for('static', filename='images/cosmo.png') }}" alt="cosmo">
+        <h1>Cosmo AI</h1>
+        <button class="new-chat-button">New Chat</button>
+        <hr class="rounded">
+        <div class="url-upload-section">
+            <label for="website-url">Website URL</label>
+            <input type="url" id="website-url" placeholder="Enter website URL">
+            <hr class="rounded">
+            <label for="file-upload">Upload File</label>
+            <input type="file" id="file-upload" accept=".pdf,.txt,.csv">
+        </div>
+        <hr class="rounded">
+        <div class="mood-section">
+            <p>Cosmo's Mood</p>
+            <br>
+            <div class="mood-inputs">            
+                <input type="radio" id="happy" name="mood" value="Happy" checked="checked">
+                <label for="happy">Happy</label><br>
+                <input type="radio" id="angry" name="mood" value="Angry">
+                <label for="happy">Angry</label><br>
+                <input type="radio" id="sad" name="mood" value="Sad">
+                <label for="happy">Sad</label>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="main">
+        <section class="top-section">
+            <div class="top">
+                <h1>Chat with AI</h1>
+                <div class="card-container">
+                    <div class="card">
+                        <h3>Creative Writing</h3>
+                        <p>Cosmo can write a short story about whatever your imagination desires!</p>
+                    </div>
+                    <div class="card">
+                        <h3>Problem Solving</h3>
+                        <p>Cosmo loves to tackle challenges, all the way from math problems to coding problems!</p>
+                    </div>
+                    <div class="card">
+                        <h3>Tailored Conversations</h3>
+                        <p>Give Cosmo links to a website you want to talk about, or even a PDF file you have questions about!</p>
+                    </div>
+                    <div class="card">
+                        <h3>Brainstorming</h3>
+                        <p>Want to make your own project and don't have any ideas? Cosmo can generate ideas to spark your passion to create!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bottom-section">
+            <div class="contact-info">
+                <i class="fa fa-github"></i>
+                <p><a href="https://github.com/EthanGreatorex">Github</a></p>
+                <i class="fa fa-envelope"></i>
+                <!-- TODO: ADD JAVASCRIPT TO COPY EMAIL TO CLIPBOARD -->
+                <p onclick="copyEmail();" id="copy-mail">Mail</p>
+                <i class="fa fa-linkedin"></i>
+                <p><a href="https://www.linkedin.com/in/ethan-greatorex-240983327/">LinkedIn</a></p>
+            </div>
+
+        </section>
+
+        <section class="chat-section hidden" id="chat-area">
+            <div id="loading" class="loading-spinner" style="display:none;">
+                <i class="fa fa-spinner fa-spin"></i> Please wait...
+            </div>
+
+            <div id="chat-messages"></div>
+            <div class="chat-input">
+                <textarea  id="user-input" placeholder="Why are you called Cosmo?"></textarea>
+                <button id="send-btn"><i class="fa fa-arrow-right"></i></button>
+            </div>
+        </section>
+    </div>
+   <script src="{{ url_for('static', filename='script.js') }}"></script> 
+    
+</body>
+</html>
