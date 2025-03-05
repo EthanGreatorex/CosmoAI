@@ -14,6 +14,14 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebar.classList.toggle('sidebar-visible');
         mainContent.classList.toggle('main-expanded');
     });
+
+    async function clearCache() {
+        const response = await fetch('/process', {
+            method: 'POST',
+        });
+    }
+
+
 });
 
 
@@ -44,9 +52,10 @@ async function requestAI() {
     // Show loading spinner
     document.getElementById('loading').style.display = 'flex';
 
-    const userInput = document.getElementById('user-input').value.trim();
-    const websiteUrl = document.getElementById('website-url').value.trim();
-    const fileInput = document.getElementById('file-upload');
+    var userInput = document.getElementById('user-input').value.trim();
+    var userName = document.getElementById('user-name').value.trim();
+    var websiteUrl = document.getElementById('website-url').value.trim();
+    var fileInput = document.getElementById('file-upload');
 
     const selectedMood = document.querySelector('.mood-inputs input[name="mood"]:checked');
 
@@ -67,6 +76,8 @@ async function requestAI() {
     const formData = new FormData();
     formData.append('prompt', userInput);
     formData.append('mood', moodValue);
+    console.log(userName);
+    formData.append('name', userName);
 
     if (websiteUrl) {
         formData.append('context', websiteUrl);
@@ -119,12 +130,22 @@ document.querySelector('.new-chat-button').addEventListener('click', () => {
     document.querySelector('.bottom-section').classList.add('hidden');
     document.getElementById('chat-area').classList.remove('hidden');
 
-    // Give a welcome message
+    // Clear old chat messages
     const chatMessages = document.getElementById('chat-messages');
+    chatMessages.innerHTML = ''
+
+    // Clear the cached chat history
+    async function clearCache() {
+        const response = await fetch('/process', {
+            method: 'POST',
+        });
+    }
+
+    // Give a welcome message
     const aiMessage = document.createElement('div');
     aiMessage.classList.add('message', 'ai');
     aiMessage.innerText = "Hello there! I'm Cosmo, how can I help you today?";
-    chatMessages.appendChild(aiMessage);
+    chatMessages.appendChild(aiMessage);    
 });
 
 // Handle Sending and Receiving Chat Messages

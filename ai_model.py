@@ -1,21 +1,27 @@
-
 from groq import Groq
 
 GROQ_API_KEY = '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'
 
-def get_resp(prompt: str, context : str, prevchat : str, mood: str) -> str:
+def get_resp(prompt: str, context: str, prevchat: str, mood: str, name: str) -> str:
+    client = Groq(api_key=GROQ_API_KEY)
 
-    client = Groq(
-        api_key=GROQ_API_KEY
-    )
+    print(name)
+
+    instructions = {
+        "role": "system",
+        "content": f"DETAILS ABOUT YOU: NAME -> Cosmo ,  THE NAME OF THE PERSON YOU ARE TALKING TO IS '{name}', . THEY ARE NOT CALLED 'Ethan' do not mention him AT ALL. The user may provide their name, if so, use that name to refer to them. If the user asks you about 'who made you' or 'your creator' refer to the creator as 'Ethan Greatorex' and refer them to the following website: https://ethangreatorex.github.io/EthanGreatorexPortfolio/ .Do not mention your previous conversations with 'Ethan'. Keep your greeting short and simple"  
+    }
+
+    user_message = {
+        "role": "user",
+        "content": f"Here are some details about your response. Always refer back to the previous chats for more context and details such as a name if the user provided one. Make your response relate to the mood. Never swear. Make use of emojis and bullet points. PROMPT: {prompt}, CONTEXT: {context}, MOOD: {mood}, PREVIOUS CHATS: {prevchat}"
+    }
 
     try:
         chat_completion = client.chat.completions.create(
             messages=[
-                {
-                    "role": "user",
-                    "content": f"You are a {mood} assitant named Cosmo. Make sure your language matches your mood but never swear or use offensive language. Your answer to any question must relate to the content of the url, markdown, csv data or user prompts if one is provided. Use nice formatting such as bullet points.Make use of emojis to enhance user experience but don't use a lot. You will also be given a prompt. You will also be given your previous conversation. CONTEXT: {context} PROMPT (may be a document in text form): {prompt} PREVIOUS CHATS: {prevchat}",
-                }
+                instructions,
+                user_message
             ],
             model="llama-3.3-70b-versatile",
         )
@@ -25,10 +31,8 @@ def get_resp(prompt: str, context : str, prevchat : str, mood: str) -> str:
             try:
                 chat_completion = client.chat.completions.create(
                     messages=[
-                        {
-                            "role": "user",
-                            "content": f"You are a {mood} assitant named Cosmo. Make sure your language matches your mood but never swear. Your answer to any question must relate to the content of the url, markdown, csv data or user prompts if one is provided. Use nice formatting such as bullet points.Make use of emojis to enhance user experience but don't use a lot. You will also be given a prompt. You will also be given your previous conversation. CONTEXT: {context} PROMPT (may be a document in text form): {prompt} PREVIOUS CHATS: {prevchat}",
-                        }
+                        instructions,
+                        user_message
                     ],
                     model="gemma2-9b-it",
                 )
@@ -40,13 +44,11 @@ def get_resp(prompt: str, context : str, prevchat : str, mood: str) -> str:
                 message = chat_completion.choices[0].message.content
                 token_usage = chat_completion.usage.total_tokens
                 time_taken = chat_completion.usage.total_time
-                return message, token_usage, time_taken,'gemma2-9b-it'
-        print("Error")    
+                return message, token_usage, time_taken, 'gemma2-9b-it'
+        print("Error")
         return "ERROR", None, None, None
     else:
         message = chat_completion.choices[0].message.content
-        if message == 'safe':
-            return "ERROR", None, None, None
         token_usage = chat_completion.usage.total_tokens
         time_taken = chat_completion.usage.total_time
-        return message, token_usage, time_taken,'llama-3.3-70b-versatile'
+        return message, token_usage, time_taken, 'llama-3.3-70b-versatile'

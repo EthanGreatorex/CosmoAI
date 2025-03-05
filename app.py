@@ -11,11 +11,22 @@ app.secret_key = 'ithinkcosmoisveryverycool'  # Replace with your secret key
 def index():
     return render_template('index.html')
 
+@app.route('/clearcache', methods=['POST'])
+def clearcache():
+    if 'chat_history' not in session:
+        session['chat_history'] = []
+    else:
+        session['chat_history'] = []
+
+
 @app.route('/process', methods=['POST'])
 def process():
-    prompt = request.form.get('prompt', '')
+    prompt = request.form.get('prompt', 'no prompt')
     mood = request.form.get('mood', 'happy')
-    context = request.form.get('context', '')  # Default to empty context
+    context = request.form.get('context', '')
+    name = request.form.get('name','')
+    if name.strip() == '':
+        name = 'Secret User'
     file = request.files.get('file')
 
     # If a file is uploaded, convert it to text
@@ -32,14 +43,20 @@ def process():
     # Store user messages and AI responses in the session
     if 'chat_history' not in session:
         session['chat_history'] = []
+    
+
+
+
+    # Call the AI model
+    response, tokens_used, time_taken, model_used = get_resp(prompt, context, session['chat_history'], mood, name)
+
 
     session['chat_history'].append({'user': prompt, 'context': context})
 
-    # Call the AI model
-    response, tokens_used, time_taken, model_used = get_resp(prompt, context, session['chat_history'], mood)
-
     # Store AI response in the session
     session['chat_history'].append({'ai': response})
+
+
 
     response_html = mistune.html(response)
     
