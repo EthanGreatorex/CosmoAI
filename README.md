@@ -20,10 +20,13 @@ https://cosmoai-v2z5.onrender.com/
 - PyMuPDF; used to convert a pdf document into text 
 
 ## 🧠Logic Flow🧠
-![image](https://github.com/user-attachments/assets/77c9a029-0dcc-403a-a8d1-abdee8d6cdbc)
+![image](https://github.com/user-attachments/assets/39f0c053-a399-4f45-9d41-712df3e6dbc1)
 
 
+## 🏠Home Preview🏠
+![image](https://github.com/user-attachments/assets/74b90f94-ca0f-4b5d-b9e8-c616697d5968)
 
-
+## 💭Chat Peview💭
+![image](https://github.com/user-attachments/assets/2590bb56-e61d-43c1-b6d6-69f837ee5844)
 
 
