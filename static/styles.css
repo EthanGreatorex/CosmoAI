@@ -11,24 +11,25 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #1e1e2f;
+    background-color: #11151c;
     color: #ffffff;
     display: flex;
     height: 100vh;
     overflow: hidden;
 }
 
+
 hr.rounded {
     margin-top: 3vh;
-    border-top: 0.3vh solid #68688a;
-    border-color: #656583;
+    border-top: 0.3vh solid #3b414a;
+    border-color: #3b414a;
     border-radius: 5px;
   }
 
 .new-chat-button{
     padding: 10px; 
     font-size: 1rem;
-    background-color: #a970ff;
+    background-color: #6525a0;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -38,14 +39,14 @@ hr.rounded {
 }
 
 .new-chat-button:hover{
-    background-color: #9763e5;
+    background-color: #7635b3;
  
 }
 
 
 .sidebar {
     width: 250px;
-    background-color: #2c2c3e;
+    background-color: #1a1f29;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -55,13 +56,13 @@ hr.rounded {
 }
 
 ::-webkit-scrollbar{
-    background-color: #656583;
+    background-color: #171b24;
     width: 0.3vw;
 }
 
 .sidebar h1 {
     font-size: 1.5rem;
-    color: #a970ff;
+    color: #f28779;
     margin-bottom: 20px;
 }
 
@@ -73,7 +74,7 @@ hr.rounded {
 .toggle-sidebar {
     display: none;
     border-radius: 8px;
-    background-color: #2c2c3e;
+    background-color: #110b29;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     border: none; border-radius: 5px; 
     cursor: pointer;
@@ -131,6 +132,7 @@ hr.rounded {
 }
 
 .top h1 {
+    color: #55b4d4;
     font-size: 1.8rem;
     margin-bottom: 10vh;
 }
@@ -145,23 +147,25 @@ hr.rounded {
 .contact-info{
     display: flex;
     gap: 10px;
-    background-color: #2c2c3e;
+    background-color: #171b24;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(15, 19, 26,0.8);
     cursor: pointer;
 }
 
 .contact-info p{
+    color: #d2a6ff;
     margin-right: 10px;
 }
 
 .contact-info a{
-    color: white;
+    color: #d2a6ff;
     text-decoration: none;
 }
 
 .contact-info i{
+    color: #d2a6ff;
     font-size: 1.5rem;
 
 }
@@ -173,13 +177,14 @@ hr.rounded {
 }
 
 .card {
-    background-color: #2c2c3e;
+    background-color: #171b24;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(15, 19, 26,0.8);
 }
 
 .card h3 {
+    color: #ffaa33;
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
@@ -190,6 +195,7 @@ hr.rounded {
 }
 
 .mood-section p{
+    color: #aad94c;
     font-size: 1.2rem;
     margin-top: 5vh;
     text-align: center;
@@ -197,23 +203,25 @@ hr.rounded {
     grid-template-columns: 1fr;
     align-items: center;
     justify-content: center;
-    background-color: #27273a;
+    background-color: #171b24;
     border-radius: 8px;
     padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(15, 19, 26,0.8);
     border: none; border-radius: 5px; 
 }
 
 .mood-inputs{
-    background-color: #27273a;
+    background-color: #171b24;
     border-radius: 8px;
     padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(15, 19, 26,0.8);
     border: none; border-radius: 5px; 
 }
 
 .mood-section input{
     margin-bottom: 1vh;
+    
+    accent-color: #7443c6;
 }
 .chat-section {
     display: flex;
@@ -233,10 +241,10 @@ hr.rounded {
     overflow-y: auto;
     max-height: 80vh;
     padding: 10px;
-    background-color: #2c2c3e;
+    background-color: #171b24;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(15, 19, 26,0.8);
 }
 
 .chat-messages ul{
@@ -260,7 +268,7 @@ hr.rounded {
 
 .message.user {
     align-self: flex-end;
-    background-color: #68688a;
+    background-color: #1a1f29;
     margin-bottom: 5vh;
 }
 
@@ -269,7 +277,7 @@ hr.rounded {
 }
 .chat-input textarea{
     font-size: 1rem;
-    background-color: #27273a;
+    background-color: #1a1f29;
     outline: none;
 }
 
@@ -279,24 +287,24 @@ hr.rounded {
 
 #send-btn{
     padding: 10px; 
-    background-color: #a970ff;
+    background-color: #6525a0;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(15, 19, 26,0.8);
      border: none; border-radius: 5px; 
      color: white; 
      cursor: pointer;
 }
 
 #send-btn:hover{
-    background-color: #9763e5;
+    background-color: #8355d3;
  
 }
 
 
 .message.ai {
     align-self: flex-start;
-    background-color: #27273a;
+    background-color: #1a1f29;
     line-height: 2.4rem;
     padding: 1rem;
 }
@@ -336,24 +344,24 @@ hr.rounded {
     flex-grow: 1;
     color: white;
     padding: 10px;
-    background-color: #27273a;
+    background-color: #171b24;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(15, 19, 26,0.8);
      border: none; border-radius: 5px; 
 }
 
 .chat-input button {
     padding: 10px 20px;
     border: none;
-    background-color: #007bff;
+    background-color: #6525a0;
     color: white;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .chat-input button:hover {
-    background-color: #0056b3;
+    background-color: #7635b3;
 }
 
 .loading-spinner {
@@ -361,7 +369,7 @@ hr.rounded {
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    color: #a970ff;
+    color: #9e7fc3;
     margin-top: 20px;
 }
 
@@ -369,15 +377,16 @@ hr.rounded {
 .url-upload-section label{
     font-size: 1.2rem;
     margin-top: 5vh;
+    color: #aad94c;
     text-align: center;
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
     justify-content: center;
-    background-color: #27273a;
+    background-color: #171b24;    
     border-radius: 8px;
     padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(15, 19, 26,0.8);
      border: none; border-radius: 5px; 
 }
 
@@ -386,10 +395,10 @@ hr.rounded {
     width: 100%;
     color: white;
     padding: 7px;
-    background-color: #27273a;
+    background-color: #171b24;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(15, 19, 26,0.8);
      border: none; border-radius: 5px; 
 }
 
@@ -397,7 +406,7 @@ hr.rounded {
     background-color: #a970ff;
     border-radius: 8px;
     padding: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(15, 19, 26,0.8);
      border: none; border-radius: 5px; 
 }
 

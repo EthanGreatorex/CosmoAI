@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+
     <button class="toggle-sidebar" onclick="toggleSidebar()">☰ Menu</button>
 
 
@@ -72,7 +73,7 @@
             <div class="contact-info">
                 <i class="fa fa-github"></i>
                 <p><a href="https://github.com/EthanGreatorex">Github</a></p>
-                <i class="fa fa-envelope"></i>
+                <i class="fa fa-envelope" onclick="copyEmail();"></i>
                 <!-- TODO: ADD JAVASCRIPT TO COPY EMAIL TO CLIPBOARD -->
                 <p onclick="copyEmail();" id="copy-mail">Mail</p>
                 <i class="fa fa-linkedin"></i>

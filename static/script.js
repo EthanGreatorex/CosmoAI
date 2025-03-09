@@ -1,7 +1,6 @@
-
 function toggleSidebar() {
     const sidebar = document.querySelector('.sidebar');
-    console.log('toggled')
+    console.log('toggled');
     sidebar.classList.toggle('active');
 }
 
@@ -14,42 +13,36 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebar.classList.toggle('sidebar-visible');
         mainContent.classList.toggle('main-expanded');
     });
-
-    async function clearCache() {
-        const response = await fetch('/process', {
-            method: 'POST',
-        });
-    }
-
-
 });
 
+async function clearCache() {
+    const response = await fetch('/clearcache', { method: 'POST' });
+    const chatMessages = document.getElementById('chat-messages');
+    chatMessages.innerHTML = "";
+    const chatBubble = document.createElement('div');
+    chatBubble.classList.add('message', 'ai');
+    chatBubble.textContent = "Hello there! I'm Cosmo, how can I help you today?";
+    chatMessages.appendChild(chatBubble);
+}
 
-const chatMessage = document.getElementById('chat-messages')
-
-chatMessage.addEventListener('click', function() {
-    toggleSidebar();
-})
-
+async function loadChatHistory() {
+    const response = await fetch('/get_chat_history', { method: 'GET' });
+    const data = await response.json();
+    const chatMessages = document.getElementById('chat-messages');
+    data.history.forEach(message => {
+        const chatBubble = document.createElement('div');
+        chatBubble.classList.add('message', message.role);
+        chatBubble.textContent = message.message;
+        chatMessages.appendChild(chatBubble);
+    });
+}
 
 function scrollToBottom() {
     const chatMessages = document.getElementById('chat-messages');
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-
-function copyEmail() {
-    navigator.clipboard.writeText('eggGreatorex@gmail.com')
-    const mail = document.getElementById('copy-mail')
-    mail.innerText = 'Copied!'
-
-    setTimeout(() => {
-        mail.innerText = 'Mail'
-    }, 1000);
-}
-
 async function requestAI() {
-    // Show loading spinner
     document.getElementById('loading').style.display = 'flex';
 
     var userInput = document.getElementById('user-input').value.trim();
@@ -62,11 +55,8 @@ async function requestAI() {
     if (!userInput) return;
 
     const moodValue = selectedMood.value;
-
-    // Clear input
     document.getElementById('user-input').value = '';
 
-    // Append user message
     const chatMessages = document.getElementById('chat-messages');
     const userMessage = document.createElement('div');
     userMessage.classList.add('message', 'user');
@@ -76,7 +66,6 @@ async function requestAI() {
     const formData = new FormData();
     formData.append('prompt', userInput);
     formData.append('mood', moodValue);
-    console.log(userName);
     formData.append('name', userName);
 
     if (websiteUrl) {
@@ -88,14 +77,12 @@ async function requestAI() {
     }
 
     try {
-        // Send to backend
         const response = await fetch('/process', {
             method: 'POST',
             body: formData,
         });
         const data = await response.json();
 
-        // Process the AI response and add one line at a time
         const aiMessage = document.createElement('div');
         aiMessage.classList.add('message', 'ai');
         chatMessages.appendChild(aiMessage);
@@ -117,38 +104,39 @@ async function requestAI() {
         console.error('Error:', error);
         alert('An error occurred while processing your request.');
     } finally {
-        // Hide loading spinner
         document.getElementById('loading').style.display = 'none';
     }
 }
 
-
-
-// Toggle Chat Area
-document.querySelector('.new-chat-button').addEventListener('click', () => {
-    document.querySelector('.top-section').classList.add('hidden');
-    document.querySelector('.bottom-section').classList.add('hidden');
-    document.getElementById('chat-area').classList.remove('hidden');
-
-    // Clear old chat messages
+function initializeChat() {
     const chatMessages = document.getElementById('chat-messages');
-    chatMessages.innerHTML = ''
+    chatMessages.innerHTML = '';
 
-    // Clear the cached chat history
-    async function clearCache() {
-        const response = await fetch('/process', {
-            method: 'POST',
-        });
-    }
-
-    // Give a welcome message
     const aiMessage = document.createElement('div');
     aiMessage.classList.add('message', 'ai');
     aiMessage.innerText = "Hello there! I'm Cosmo, how can I help you today?";
-    chatMessages.appendChild(aiMessage);    
+    chatMessages.appendChild(aiMessage);
+
+    document.querySelector('.top-section').classList.add('hidden');
+    document.querySelector('.bottom-section').classList.add('hidden');
+    document.getElementById('chat-area').classList.remove('hidden');
+}
+
+function copyEmail() {
+    navigator.clipboard.writeText('eggGreatorex@gmail.com');
+    const mail = document.getElementById('copy-mail');
+    mail.innerText = 'Copied!';
+
+    setTimeout(() => {
+        mail.innerText = 'Mail';
+    }, 1000);
+}
+
+document.querySelector('.new-chat-button').addEventListener('click', () => {
+    initializeChat();
+    clearCache();
 });
 
-// Handle Sending and Receiving Chat Messages
 document.getElementById('send-btn').addEventListener('click', async () => {
     requestAI();
 });
