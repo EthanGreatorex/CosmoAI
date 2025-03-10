@@ -137,6 +137,10 @@ document.querySelector('.new-chat-button').addEventListener('click', () => {
     clearCache();
 });
 
+document.getElementById('chat-messages').addEventListener('click', () => {
+    toggleSidebar();
+})
+
 document.getElementById('send-btn').addEventListener('click', async () => {
     requestAI();
 });
