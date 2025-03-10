@@ -28,9 +28,10 @@ https://cosmoai-v2z5.onrender.com/
 
 
 ## 🏠Home Preview🏠
-![image](https://github.com/user-attachments/assets/74b90f94-ca0f-4b5d-b9e8-c616697d5968)
+![image](https://github.com/user-attachments/assets/db6335de-aabc-475a-8fe7-1a23140ad7b4)
+
 
 ## 💭Chat Peview💭
-![image](https://github.com/user-attachments/assets/2590bb56-e61d-43c1-b6d6-69f837ee5844)
+![image](https://github.com/user-attachments/assets/9e4f4fd4-c380-4037-bc5a-b6c8b9f7a39c)
 
 
