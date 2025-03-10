@@ -1,5 +1,9 @@
 # Welcome to Cosmo Chat Bot 🥳
 
+#### What has changed from the previous version?
+- Cosmo now used Flask framework instead of Streamlit
+- Cosmo now runs 500% faster & consumes 30% less client-side memory!
+
 ### 🚀View Live🚀
 https://cosmoai-v2z5.onrender.com/
 
