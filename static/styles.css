@@ -108,6 +108,10 @@ hr.rounded {
     cursor: pointer;
 }
 
+.sidebar img{
+    cursor: pointer;
+}
+
 .main{
     display: grid;
     grid-template-columns: 1fr;
@@ -135,7 +139,7 @@ hr.rounded {
 .top h1 {
     color: #d2a6ff;
     font-size: 1.8rem;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
 }
 
 .bottom-section{

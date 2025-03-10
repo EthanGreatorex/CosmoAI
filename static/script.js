@@ -109,6 +109,7 @@ async function requestAI() {
 }
 
 function initializeChat() {
+    window.scrollTo(0, document.body.scrollHeight);
     const chatMessages = document.getElementById('chat-messages');
     chatMessages.innerHTML = '';
 
@@ -151,3 +152,12 @@ document.getElementById('user-input').addEventListener('keydown', async (event) 
         requestAI();
     }
 });
+
+
+function reloadPage() {
+    window.location.reload()
+}
+
+window.onload = function() {
+    window.scrollTo(0, document.body.scrollHeight);
+};
