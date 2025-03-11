@@ -133,10 +133,12 @@ function copyEmail() {
     }, 1000);
 }
 
-document.querySelector('.new-chat-button').addEventListener('click', () => {
+function startNewChat() {
     initializeChat();
     clearCache();
-});
+}
+
+
 
 document.getElementById('chat-messages').addEventListener('click', () => {
     toggleSidebar();

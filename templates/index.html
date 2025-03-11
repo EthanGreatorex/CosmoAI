@@ -10,13 +10,13 @@
 </head>
 <body>
 
-    <button class="toggle-sidebar" onclick="toggleSidebar()">☰ Menu</button>
+    <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa fa-sliders"></i></button>
 
 
     <div class="sidebar" id="sidebar">
-        <img src="{{ url_for('static', filename='images/cosmo.png') }}" alt="cosmo" onclick="reloadPage();">
+        <img src="{{ url_for('static', filename='images/cosmo.png') }}" alt="cosmo" onclick="reloadPage();" class="cosmo-logo">
         <h1>Cosmo AI</h1>
-        <button class="new-chat-button">New Chat</button>
+        <button class="new-chat-button" onclick="startNewChat();">New Chat</button>
         <hr class="rounded">
         
         <div class="url-upload-section">
@@ -67,6 +67,8 @@
                         <p>Want to make your own project and don't have any ideas? Cosmo can generate ideas to spark your passion to create!</p>
                     </div>
                 </div>
+                <br>
+                <button class="new-chat-button" onclick="startNewChat();" style="z-index: 999;">New Chat</button>
             </div>
         </section>
         <section class="bottom-section">

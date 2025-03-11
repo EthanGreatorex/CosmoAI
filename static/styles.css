@@ -425,6 +425,20 @@ hr.rounded {
         transform: translateX(-150%);
     }
 
+    *{
+        font-size: 12px;
+    }
+
+    #chat-messages{
+        font-size: 12px;
+    }
+
+
+    .cosmo-logo{
+        width: 20vw;
+        height: auto;
+    }
+
     .sidebar.active {
         transform: translateX(0);
     }
