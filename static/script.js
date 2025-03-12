@@ -138,8 +138,6 @@ function startNewChat() {
     clearCache();
 }
 
-
-
 document.getElementById('chat-messages').addEventListener('click', () => {
     toggleSidebar();
 })
@@ -155,7 +153,6 @@ document.getElementById('user-input').addEventListener('keydown', async (event) 
     }
 });
 
-
 function reloadPage() {
     window.location.reload()
 }
@@ -163,3 +160,45 @@ function reloadPage() {
 window.onload = function() {
     window.scrollTo(0, document.body.scrollHeight);
 };
+
+document.addEventListener('DOMContentLoaded', function () {
+    const moodRadios = document.querySelectorAll('.mood-inputs input[name="mood"]');
+    const cosmoLogo = document.getElementById('cosmo-logo');
+
+    function updateColorScheme(mood) {
+        const root = document.documentElement;
+        switch (mood) {
+            case 'Happy':
+                root.style.setProperty('--main-bg-color', '#030014'); // Default
+                root.style.setProperty('--accent-color', '#d2a6ff');
+                break;
+            case 'Angry':
+                root.style.setProperty('--main-bg-color', '#7f0000'); // Red scheme
+                root.style.setProperty('--accent-color', '#ff4c4c');
+                break;
+            case 'Sad':
+                root.style.setProperty('--main-bg-color', '#00134d'); // Blue scheme
+                root.style.setProperty('--accent-color', '#4c9eff');
+                break;
+        }
+    }
+
+    moodRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            const mood = document.querySelector('.mood-inputs input[name="mood"]:checked').value;
+            updateColorScheme(mood);
+
+            switch (mood) {
+                case 'Happy':
+                    cosmoLogo.src = cosmoLogo.getAttribute('data-happy');
+                    break;
+                case 'Angry':
+                    cosmoLogo.src = cosmoLogo.getAttribute('data-angry');
+                    break;
+                case 'Sad':
+                    cosmoLogo.src = cosmoLogo.getAttribute('data-sad');
+                    break;
+            }
+        });
+    });
+});

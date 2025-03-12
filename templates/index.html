@@ -14,22 +14,19 @@
 
 
     <div class="sidebar" id="sidebar">
-        <img src="{{ url_for('static', filename='images/cosmo.png') }}" alt="cosmo" onclick="reloadPage();" class="cosmo-logo">
+        <img 
+        src="{{ url_for('static', filename='images/cosmo.png') }}" 
+        alt="cosmo" 
+        id="cosmo-logo" 
+        onclick="reloadPage();" 
+        class="cosmo-logo"
+        data-happy="{{ url_for('static', filename='images/cosmo.png') }}"
+        data-angry="{{ url_for('static', filename='images/cosmo-angry.png') }}"
+        data-sad="{{ url_for('static', filename='images/cosmo-sad.png') }}">
         <h1>Cosmo AI</h1>
         <button class="new-chat-button" onclick="startNewChat();">New Chat</button>
         <hr class="rounded">
-        
-        <div class="url-upload-section">
-            <label for="user-name">Your Name?</label>
-            <input type="text" id="user-name" placeholder="e.g., Kevin">
-            <hr class="rounded">
-            <label for="website-url">Website URL</label>
-            <input type="url" id="website-url" placeholder="Enter website URL">
-            <hr class="rounded">
-            <label for="file-upload">Upload File</label>
-            <input type="file" id="file-upload" accept=".pdf,.txt,.csv">
-        </div>
-        <hr class="rounded">
+
         <div class="mood-section">
             <p>Cosmo's Mood</p>
             <br>
@@ -43,6 +40,18 @@
             </div>
 
         </div>
+        
+        <div class="url-upload-section">
+            <label for="user-name">Your Name?</label>
+            <input type="text" id="user-name" placeholder="e.g., Kevin">
+            <hr class="rounded">
+            <label for="website-url">Website URL</label>
+            <input type="url" id="website-url" placeholder="Enter website URL">
+            <hr class="rounded">
+            <label for="file-upload">Upload File</label>
+            <input type="file" id="file-upload" accept=".pdf,.txt,.csv">
+        </div>
+        <hr class="rounded">
     </div>
     
     <div class="main">
