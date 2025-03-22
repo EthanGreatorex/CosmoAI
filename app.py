@@ -26,6 +26,7 @@ def process():
     mood = request.form.get('mood', 'happy')
     context = request.form.get('context', '')
     name = request.form.get('name', '')
+    length = request.form.get('length','short')
     if name.strip() == '':
         name = 'Secret User'
     file = request.files.get('file')
@@ -43,9 +44,11 @@ def process():
     if 'chat_history' not in session:
         session['chat_history'] = []
 
+    if len(session['chat_history']) > 5:
+        session['chat_history'] = session['chat_history'][-5:]
 
     response, tokens_used, time_taken, model_used = get_resp(
-        prompt, context, session['chat_history'], mood, name
+        prompt, context, session['chat_history'], mood, name, length
     )
 
     session['chat_history'].append({'role': 'user', 'message': prompt})

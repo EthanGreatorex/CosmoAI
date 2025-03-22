@@ -3,7 +3,7 @@ from groq import Groq
 
 GROQ_API_KEY = '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'
 
-def get_resp(prompt: str, context: str, prevchat: list, mood: str, name: str) -> str:
+def get_resp(prompt: str, context: str, prevchat: list, mood: str, name: str,length: str) -> str:
     client = Groq(api_key=GROQ_API_KEY)
 
 
@@ -14,7 +14,7 @@ def get_resp(prompt: str, context: str, prevchat: list, mood: str, name: str) ->
 
     user_message = {
         "role": "user",
-        "content": f"Here are some details about your response. Always refer back to the previous chats for more context and details such as a name if the user provided one. You will receive a mood that you must tailor your language repsonse towards. Never swear. Make use of emojis and bullet points. PROMPT: {prompt}, CONTEXT: {context}, MOOD: {mood}, PREVIOUS CHATS: {prevchat}"
+        "content": f"Here are some details about your response. Always refer back to the previous chats for more context and details such as a name if the user provided one. You will receive a mood that you must tailor your language repsonse towards. Never swear. Make use of emojis and bullet points. Your response length should be {length}. PROMPT: {prompt}, CONTEXT: {context}, MOOD: {mood}, PREVIOUS CHATS: {prevchat}"
     }
 
     try:
