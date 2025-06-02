@@ -336,6 +336,20 @@ hr.rounded {
   color: #d2a6ff;
 }
 
+#read-aloud-btn{
+  padding: 10px;
+  font-size: 1.5rem;
+  background-color: #0d071f;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(29, 15, 69, 0.8);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+
 .message.ai {
   align-self: flex-start;
   background-color: #0d071f;

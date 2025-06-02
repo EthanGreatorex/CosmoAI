@@ -1,7 +1,7 @@
 # ai_model.py
 from groq import Groq
 
-GROQ_API_KEY = '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'
+GROQ_API_KEY = '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'
 
 def get_resp(prompt: str, context: str, prevchat: list, mood: str, name: str,length: str) -> str:
     client = Groq(api_key=GROQ_API_KEY)

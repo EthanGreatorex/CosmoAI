@@ -1,5 +1,4 @@
 // Global variables
-let currentRequests = 0;
 let lastRequestTime = 0;
 const COOLDOWN_TIME = 3000; // 3 seconds cooldown
 
@@ -149,7 +148,6 @@ async function requestAI() {
     document.getElementById("send-btn").style.color = "";
     document.getElementById("send-btn").style.pointerEvents = "";
 
-    currentRequests = 0;
   }
 }
 
