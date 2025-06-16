@@ -4,6 +4,7 @@ from pdf_to_text import convert_pdf_to_txt
 import mistune
 import os
 
+
 app = Flask(__name__)
 app.secret_key = 'ithinkcosmoisveryverycool'  # Replace with your secret key
 

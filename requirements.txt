@@ -3,3 +3,4 @@ groq
 pymupdf
 flask
 mistune
+python-dotenv
