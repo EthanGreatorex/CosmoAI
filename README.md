@@ -4,7 +4,7 @@
 - Cosmo now used Flask framework instead of Streamlit
 - Cosmo now runs 500% faster & consumes 30% less client-side memory!
 
-
+https://cosmoai-v2z5.onrender.com/
 
 ![cosmo](https://github.com/user-attachments/assets/36f0f914-0296-49c3-9440-eb463563b6a8)
 
